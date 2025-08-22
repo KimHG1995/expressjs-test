@@ -7,6 +7,13 @@ import { AuthService } from '@services/auth.service';
 export class AuthController {
   public authService = Container.get(AuthService);
 
+  /**
+   * @summary 회원가입
+   * @description 사용자를 등록합니다.
+   * @param {Request} req - 요청 객체
+   * @param {Response} res - 응답 객체
+   * @param {NextFunction} next - 다음 미들웨어
+   */
   public signUp = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const userData: User = req.body;
@@ -18,6 +25,13 @@ export class AuthController {
     }
   };
 
+  /**
+   * @summary 로그인
+   * @description 사용자를 로그인합니다.
+   * @param {Request} req - 요청 객체
+   * @param {Response} res - 응답 객체
+   * @param {NextFunction} next - 다음 미들웨어
+   */
   public logIn = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const userData: User = req.body;
@@ -30,6 +44,13 @@ export class AuthController {
     }
   };
 
+  /**
+   * @summary 로그아웃
+   * @description 사용자를 로그아웃합니다.
+   * @param {RequestWithUser} req - 요청 객체 (사용자 정보 포함)
+   * @param {Response} res - 응답 객체
+   * @param {NextFunction} next - 다음 미들웨어
+   */
   public logOut = async (req: RequestWithUser, res: Response, next: NextFunction): Promise<void> => {
     try {
       const userData: User = req.user;

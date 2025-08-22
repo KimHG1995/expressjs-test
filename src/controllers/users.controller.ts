@@ -6,6 +6,13 @@ import { UserService } from '@services/users.service';
 export class UserController {
   public user = Container.get(UserService);
 
+  /**
+   * @summary 모든 사용자 조회
+   * @description 모든 사용자를 조회합니다.
+   * @param {Request} req - 요청 객체
+   * @param {Response} res - 응답 객체
+   * @param {NextFunction} next - 다음 미들웨어
+   */
   public getUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const findAllUsersData: User[] = await this.user.findAllUser();
@@ -16,6 +23,13 @@ export class UserController {
     }
   };
 
+  /**
+   * @summary ID로 사용자 조회
+   * @description ID를 사용하여 사용자를 조회합니다.
+   * @param {Request} req - 요청 객체
+   * @param {Response} res - 응답 객체
+   * @param {NextFunction} next - 다음 미들웨어
+   */
   public getUserById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const userId = Number(req.params.id);
@@ -27,6 +41,13 @@ export class UserController {
     }
   };
 
+  /**
+   * @summary 사용자 생성
+   * @description 새로운 사용자를 생성합니다.
+   * @param {Request} req - 요청 객체
+   * @param {Response} res - 응답 객체
+   * @param {NextFunction} next - 다음 미들웨어
+   */
   public createUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const userData: User = req.body;
@@ -38,6 +59,13 @@ export class UserController {
     }
   };
 
+  /**
+   * @summary 사용자 정보 업데이트
+   * @description ID를 사용하여 사용자 정보를 업데이트합니다.
+   * @param {Request} req - 요청 객체
+   * @param {Response} res - 응답 객체
+   * @param {NextFunction} next - 다음 미들웨어
+   */
   public updateUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const userId = Number(req.params.id);
@@ -50,6 +78,13 @@ export class UserController {
     }
   };
 
+  /**
+   * @summary 사용자 삭제
+   * @description ID를 사용하여 사용자를 삭제합니다.
+   * @param {Request} req - 요청 객체
+   * @param {Response} res - 응답 객체
+   * @param {NextFunction} next - 다음 미들웨어
+   */
   public deleteUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const userId = Number(req.params.id);
